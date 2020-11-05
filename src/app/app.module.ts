@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ParentComponent } from './parent-component/parent.component';
 import { ChildComponent } from './child-component/child-component.component';
+import { MishuDirective } from './mishu.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    MishuDirective
   ],
   imports: [
     BrowserModule

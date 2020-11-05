@@ -10,6 +10,8 @@ export class ParentComponent {
   imgSource = 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
   messageForChild = 'Hello Bacha, khana khaya...';
   messageFromChild = '';
+  numberSeries: string[] = ['a', 'b', 'c', 'd'];
+  color = 'red';
 
   messageReceived(event: string): void {
     this.messageFromChild = event;

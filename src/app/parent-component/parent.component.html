@@ -7,3 +7,25 @@ This is my image: <img [src]="imgSource">
   (messageFromChild)="messageReceived($event)">
 </app-child-component>
 <p>{{ 'From Child: ' + messageFromChild }}</p>
+<hr>
+<h3>Directives</h3>
+<p>
+  <ng-container *ngFor="let number of numberSeries; let i = index">
+    <!-- <span *ngIf="i % 2 === 0; else oddValues">{{ number  + '[' + i + ']' }}</span> -->
+    <span [ngStyle]="{'background-color': '#FF1493'}" *ngIf="i % 2 === 0">{{ 'This is even series:' + number  + '[' + i + ']' }}</span><br>
+    <span [ngStyle]="{'background-color': 'pink'}" *ngIf="i % 2 !== 0">{{ 'This is even series:' + number  + '[' + i + ']' }}</span><br>
+  </ng-container>
+</p>
+<ng-template #oddValues>
+  <p>This is odd series</p>
+</ng-template>
+
+
+<ol [ngSwitch]="color"> 
+  <li [ngClass]="{ 'highlight': true, 'red': true }" *ngSwitchCase="'red'">red</li>
+  <li [ngClass]="{ 'highlight': true, 'green': true }" *ngSwitchCase="'green'">green</li>
+  <li *ngSwitchDefault>Unknown</li>
+</ol>
+
+<h4>Cutom Directive</h4>
+<p appMishu>My name is Mishu</p>
