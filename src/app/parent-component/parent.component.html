@@ -1,5 +1,5 @@
 <h2>From {{ title }} Component</h2>
-This is my image: <img [src]="imgSource">
+This is my image: <img [src]="imgSource" (click)="navigateToChildComponent()">
 <br>
 <img [attr.src]="imgSource">
 <app-child-component

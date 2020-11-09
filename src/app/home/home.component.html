@@ -1,0 +1,14 @@
+<h4>Navigation</h4>
+<div class="row">
+  <div class="col">
+    <a routerLink='/parent' routerLinkActive="active" [queryParams]="{'name': 'aakash'}">Parent Component</a> <br>
+  </div>
+  <div class="col">
+    <a routerLink='/child' routerLinkActive="active">Child Component</a> <br>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <router-outlet></router-outlet>
+  </div>
+</div>
