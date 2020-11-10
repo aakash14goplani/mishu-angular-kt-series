@@ -1,9 +1,0 @@
-<h2>From {{ title }} Component</h2>
-This is my image: <img [src]="imgSource">
-<br>
-<img [attr.src]="imgSource">
-<app-child-component
-  [messageReceiver]="messageForChild"
-  (messageFromChild)="messageReceived($event)">
-</app-child-component>
-<p>{{ 'From Child: ' + messageFromChild }}</p>

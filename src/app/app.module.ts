@@ -2,17 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ParentComponent } from './parent-component/parent.component';
-import { ChildComponent } from './child-component/child-component.component';
+import { ObservableComponent } from './observale/observale.component';
+import { AppRoutingConfig } from './app.routing.config';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ParentComponent,
-    ChildComponent
+    ObservableComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingConfig
   ],
   providers: [],
   bootstrap: [AppComponent]
