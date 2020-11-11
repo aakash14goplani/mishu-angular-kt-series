@@ -1,0 +1,11 @@
+<p>http works!</p>
+
+Post Data to Server: <button (click)="postData()">POST</button>
+<p *ngIf="postDataReady.length > 0">Data posted to server...</p>
+
+<br><br>
+
+Fetch Data to Server: <button (click)="getData()">GET</button>
+<ul *ngIf="dataFromServer.length > 0">
+  <li *ngFor="let data of dataFromServer">{{ data.id + ' -- ' + data.title + '--' + data.message }}</li>
+</ul>
