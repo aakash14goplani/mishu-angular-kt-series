@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { HttpModel } from './http.model';
 import { HttpService } from './http.service';
 import { take } from 'rxjs/operators';
@@ -8,16 +8,23 @@ import { take } from 'rxjs/operators';
   templateUrl: './http.component.html',
   styleUrls: ['./http.component.css']
 })
-export class HttpComponent implements OnInit {
+export class HttpComponent implements OnInit, AfterViewChecked {
 
   postDataReady = '';
+  putDataReady = null;
+  deleteDataReady = '';
+  errorString = '';
   dataFromServer = [];
 
-  constructor(
-    private httpService: HttpService
-  ) { }
+  userIdInput = '';
+  userTitleInput = '';
+  userMessageInput = '';
 
-  ngOnInit(): void {
+  constructor(private httpService: HttpService) {}
+
+  ngOnInit(): void {}
+
+  ngAfterViewChecked(): void {
   }
 
   postData(): void {
@@ -30,6 +37,10 @@ export class HttpComponent implements OnInit {
       .subscribe(
         (data$) => {
           this.postDataReady = data$.name;
+        },
+        (error) => {
+          console.log('error on post: ', error);
+          this.errorString = error.message;
         }
       );
   }
@@ -46,6 +57,38 @@ export class HttpComponent implements OnInit {
             this.dataFromServer.push(element[1]);
           });
         }
+      }
+    );
+  }
+
+  updateData() {
+    const data = new HttpModel();
+    data.id = '777';
+    data.title = 'First Data via POST';
+    data.message = 'Updated via HTTP POST request';
+
+    this.httpService.updateDataInServer(data)
+      .subscribe(
+        (data$) => {
+          this.putDataReady = data$;
+        },
+        (error) => {
+          console.log('error: ', error);
+          this.errorString = error;
+        }
+      );
+  }
+
+  deleteData(): void {
+    this.httpService.deleteDataFromServer()
+    .subscribe(
+      (data$) => {
+        console.log('error: ', data$);
+        this.deleteDataReady = data$;
+      },
+      (error) => {
+        console.log('error: ', error);
+        this.errorString = error;
       }
     );
   }

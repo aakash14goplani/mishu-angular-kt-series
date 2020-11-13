@@ -9,3 +9,18 @@ Fetch Data to Server: <button (click)="getData()">GET</button>
 <ul *ngIf="dataFromServer.length > 0">
   <li *ngFor="let data of dataFromServer">{{ data.id + ' -- ' + data.title + '--' + data.message }}</li>
 </ul>
+
+<br><br>
+
+Update details:<br>
+ID: <input type="text" name="input_data_id" [(ngModel)]="userIdInput"><br>
+TITLE: <input type="text" name="input_data_title" [(ngModel)]="userTitleInput"><br>
+MESSAGE: <input type="text" name="input_data_message" [(ngModel)]="userMessageInput"><br>
+<button (click)="updateData()">PUT</button>
+<p *ngIf="!!putDataReady" [innerHTML]="putDataReady.title"></p>
+
+<p *ngIf="errorString.length > 0">{{ 'An error occured: ' + errorString }}</p>
+
+<br><br>
+
+<button (click)="deleteData()">DELETE</button>
